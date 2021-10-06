@@ -32,7 +32,7 @@ RUN yum install -y \
         libxslt-devel \
         ImageMagick
 
-RUN yum clean -y all
+#RUN yum clean -y all
 
 # Symlink python
 RUN ln -sfn /usr/bin/python3.8 /usr/bin/python3 & \
