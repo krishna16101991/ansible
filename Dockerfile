@@ -75,9 +75,7 @@ RUN unzip chromedriver_linux64.zip -d /opt/chrome
 #RUN yum install -y yum-utils
 #RUN yum install -y terraform
 
-ENTRYPOINT ["ping"]
-
-CMD ["bash"]
+CMD ["/bin/ping","localhost"]
 
 # copy the testing python script
 #COPY selenium-with-headless-chrome.py .
