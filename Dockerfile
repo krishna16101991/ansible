@@ -43,6 +43,9 @@ RUN ln -sfn /usr/bin/python3.8 /usr/bin/python3 & \
 # setuptools v58 removed 2to3 support: https://setuptools.pypa.io/en/latest/history.html#v58-0-0
 # the `fs` package relies on `2to3`
 RUN pip3 install --upgrade pip pipenv "setuptools<58" wheel
+RUN which python3 
+RUN which pip3
+RUN which python
 
 LABEL org.label-schema.schema-version="1.0" \
     org.label-schema.name="Selenium with Headless Chrome and CentOS" \
