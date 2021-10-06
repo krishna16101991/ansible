@@ -1,10 +1,10 @@
 FROM centos:7
-RUN yum -y install httpd; yum clean all; systemctl enable httpd.service
+RUN yum update 
+RUN yum install -y httpd; yum clean all; systemctl enable httpd.service
 
 EXPOSE 80
  
-RUN yum update \
-  && yum install -y python3-pip python3-dev \
+RUN yum install -y python3-pip python3-dev \
   && cd /usr/local/bin \
   && ln -s /usr/bin/python3 python \
   && pip3 install --upgrade pip 
