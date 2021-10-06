@@ -72,6 +72,13 @@ RUN mkdir /opt/chrome
 RUN curl -O https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
 RUN unzip chromedriver_linux64.zip -d /opt/chrome
 
+RUN yum install -y yum-utils
+RUN yum install -y terraform
+
+ENTRYPOINT ["ping"]
+
+CMD ["bash"]
+
 # copy the testing python script
 #COPY selenium-with-headless-chrome.py .
 #RUN python selenium-with-headless-chrome.py
