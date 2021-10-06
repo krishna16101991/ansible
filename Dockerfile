@@ -1,5 +1,5 @@
 FROM centos:7
-RUN yum update 
+# RUN yum update 
 RUN yum install -y httpd; yum clean all; systemctl enable httpd.service
 
 EXPOSE 80
