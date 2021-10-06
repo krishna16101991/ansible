@@ -34,6 +34,16 @@ RUN yum install -y \
 
 RUN yum clean -y all
 
+# Symlink python
+RUN ln -sfn /usr/bin/python3.8 /usr/bin/python3 & \
+    ln -sfn /usr/bin/python3 /usr/bin/python & \
+    ln -sfn /usr/bin/pip3.8 /usr/bin/pip3 & \
+    ln -sfn /usr/bin/pip3 /usr/bin/pip
+
+# setuptools v58 removed 2to3 support: https://setuptools.pypa.io/en/latest/history.html#v58-0-0
+# the `fs` package relies on `2to3`
+RUN pip3 install --upgrade pip pipenv "setuptools<58" wheel
+
 LABEL org.label-schema.schema-version="1.0" \
     org.label-schema.name="Selenium with Headless Chrome and CentOS" \
     org.label-schema.vendor="liguoliang.com" \
@@ -41,18 +51,18 @@ LABEL org.label-schema.schema-version="1.0" \
     org.label-schema.build-date="20180817"
 
 
-RUN curl -O https://bootstrap.pypa.io/get-pip.py
-RUN python get-pip.py
+#RUN curl -O https://bootstrap.pypa.io/get-pip.py
+#RUN python get-pip.py
 
 # INSTALL ANSIBLE
-RUN pip install ansible
+RUN pip3 install ansible
 
 # install headless chrome
 RUN curl -O  https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 RUN yum install google-chrome-stable_current_x86_64.rpm -y
 
 # install selenium
-RUN pip install selenium
+RUN pip3 install selenium
 
 # download chromedriver
 RUN mkdir /opt/chrome
