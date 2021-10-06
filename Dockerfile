@@ -45,7 +45,7 @@ RUN ln -sfn /usr/bin/python3.8 /usr/bin/python3 & \
 RUN pip3 install --upgrade pip pipenv "setuptools<58" wheel
 RUN which python3 
 RUN which pip3
-RUN which python
+
 
 LABEL org.label-schema.schema-version="1.0" \
     org.label-schema.name="Selenium with Headless Chrome and CentOS" \
